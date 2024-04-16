@@ -18,6 +18,14 @@ Traditionally, fine-tuning involves updating all the model's weights, which can 
 
 By using QLoRA, you can efficiently fine-tune large language models like LLaMA-2-7B on new tasks or domains, achieving comparable or even better performance than full model fine-tuning while requiring significantly less computational resources and memory.
 
+## How to Fine-Tune LLaMA 2-7B: A Step-By-Step Guide
+
+We will focus on fine-tuning the LLaMA 2-7B model (7 billion parameters) using a T4 GPU with 16 GB of VRAM. Due to the model's size, full fine-tuning is not feasible on such limited resources. Instead, we will employ a parameter-efficient fine-tuning technique called **QLoRA** (Quantized Lorentz-regularized Adapters).
+
+QLoRA involves introducing small adapter modules to the pre-trained model's layers and updating only the weights of these adapters during fine-tuning. Additionally, the adapter weights are quantized to 4-bit precision to further reduce memory requirements, and Lorentz regularization is applied to improve performance.
+
+To implement QLoRA fine-tuning, we will leverage the Hugging Face ecosystem of LLM libraries: `transformers`, `accelerate`, `peft`, `trl`, and `bitsandbytes`.
+
 ## Repository Contents
 
 This repository includes the following:
